@@ -1,0 +1,153 @@
+/* === متغیرهای اصلی === */
+:root {
+    --font-vazir: 'Vazirmatn', sans-serif;
+    --font-en: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --color-primary-neon: #00e0e0; /* فیروزه‌ای نئونی */
+    --color-bg: #03060b; /* مشکی مایل به سرمه‌ای */
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #cccccc;
+    --color-border-frame: rgba(0, 224, 224, 0.2); /* حاشیه قاب با شفافیت */
+    --color-border-divider: rgba(0, 224, 224, 0.4);
+}
+
+/* === تنظیمات کلی === */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-vazir);
+    background-color: var(--color-bg);
+    color: var(--color-text-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* === کانتینر اصلی === */
+.hero-container {
+    display: flex;
+    flex-direction: row-reverse; /* عکس در چپ، متن در راست */
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    max-width: 1300px;
+    padding: 40px 20px;
+    gap: 50px;
+}
+
+/* === بخش تصویر (چپ) === */
+.image-content {
+    flex: 0 1 450px; /* ثابت ماندن سایز عکس */
+}
+
+.image-frame {
+    padding: 15px;
+    border: 2px solid var(--color-border-frame);
+    border-radius: 25px;
+    background: rgba(10, 25, 47, 0.1); /* پس‌زمینه شیشه‌ای */
+    backdrop-filter: blur(5px);
+}
+
+.image-frame img {
+    width: 100%;
+    border-radius: 15px;
+    display: block;
+}
+
+/* === بخش متن (راست) === */
+.text-content {
+    flex: 1;
+    max-width: 600px;
+}
+
+.header-en {
+    direction: ltr; /* انگلیسی‌ها چپ‌چین */
+}
+
+.text-content h1 {
+    font-family: var(--font-en);
+    font-size: 3rem; /* 48px */
+    font-weight: bold;
+    margin: 0;
+}
+
+.text-content .subtitle {
+    font-family: var(--font-en);
+    font-size: 1.1rem; /* 18px */
+    color: var(--color-text-secondary);
+    margin-top: 8px;
+    letter-spacing: 0.5px;
+}
+
+.divider {
+    width: 100px;
+    height: 2px;
+    background-color: var(--color-border-divider);
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.header-fa h2 {
+    font-size: 1.5rem; /* 24px */
+    color: var(--color-primary-neon);
+    font-weight: 800;
+}
+
+.header-fa h3 {
+    font-size: 1.25rem; /* 20px */
+    font-weight: 700;
+    margin-top: 30px;
+}
+
+.header-fa p {
+    font-size: 1rem; /* 16px */
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+    max-width: 95%;
+}
+
+.whatsapp-link {
+    display: inline-block;
+    margin-top: 25px;
+}
+
+.whatsapp-link svg {
+    transition: transform 0.3s ease;
+}
+
+.whatsapp-link:hover svg {
+    transform: scale(1.15);
+}
+
+/* === طراحی واکنش‌گرا (موبایل) === */
+@media (max-width: 900px) {
+    .hero-container {
+        flex-direction: column; /* ستون‌ها روی هم می‌افتند */
+        text-align: center;
+        gap: 20px;
+    }
+
+    .text-content {
+        order: 2; /* متن می‌آید پایین عکس */
+    }
+    .image-content {
+        order: 1; /* عکس می‌رود بالای متن */
+        flex-basis: auto;
+        width: 70%;
+        max-width: 400px;
+    }
+    
+    .header-en {
+        direction: ltr;
+        text-align: center;
+    }
+    
+    .divider {
+        margin: 20px auto; /* جداکننده وسط‌چین می‌شود */
+    }
+
+    .header-fa p {
+        max-width: 100%;
+    }
+}
